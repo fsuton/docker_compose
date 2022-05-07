@@ -1,4 +1,6 @@
-mysql:
+version: "3.7"
+services:
+  mysql:
     image: 'mysql-server:8.0'
     container_name: mysql
     env_file: 
@@ -7,7 +9,7 @@ mysql:
       - 3306:3306
     volumes: 
       - mysql:/var/lib/mysql/data/
-zabbix-server:
+  zabbix-server:
     image: 'zabbix/zabbix-server-mysql:latest'
     container_name: zabbix-server
     env_file: 
@@ -16,7 +18,7 @@ zabbix-server:
       - 10051:10051
     depends_on: 
       - mysql
-zabbix-frontend:
+  zabbix-frontend:
     image: 'zabbix/zabbix-web-nginx-mysql:latest'
     container_name: zabbix-frontend
     env_file: 
@@ -26,7 +28,7 @@ zabbix-frontend:
     depends_on:
       - zabbix-server
       - mysql
-zabbix-agent:   # Zabbix agent service that tracks usage and send to zabbix server
+  zabbix-agent:   # Zabbix agent service that tracks usage and send to zabbix server
     image: zabbix/zabbix-agent:latest
     container_name: zabbix-agent
     privileged: true   #access mode for allowing resource access
@@ -39,4 +41,3 @@ volumes:
   postgres:
   zabbix-agent:
   zabbix-server:
-  
