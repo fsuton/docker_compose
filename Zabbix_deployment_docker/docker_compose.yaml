@@ -39,3 +39,4 @@ volumes:
   postgres:
   zabbix-agent:
   zabbix-server:
+  
