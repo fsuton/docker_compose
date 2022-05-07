@@ -35,7 +35,7 @@ services:
     environment:
       - ZBX_SERVER_HOST=zabbix-server #the IP/Dns of Zabbix server
     volumes:
-      -zabbix-agent:/etc/zabbix/
+      - zabbix-agent:/etc/zabbix/
 
 volumes: 
   mysql:
