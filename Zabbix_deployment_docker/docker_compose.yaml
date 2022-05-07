@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   mysql:
-    image: 'mysql-server:8.0'
+    image: 'mysql/mysql-server:8.0'
     container_name: mysql
     env_file: 
       - mysql.env
@@ -38,6 +38,6 @@ services:
       -zabbix-agent:/etc/zabbix/
 
 volumes: 
-  postgres:
+  mysql:
   zabbix-agent:
   zabbix-server:
